@@ -40,6 +40,7 @@ gem 'capistrano-rails'#, github: 'capistrano/rails', tag: 'v1.1.0'
 
 gem 'thin'
 gem 'haml'
+gem 'httparty'
 
 group :development do
   gem 'spring'

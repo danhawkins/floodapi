@@ -10,7 +10,7 @@ class FloodData
   field :qualifier, type: String
   field :units, type: String
   field :value, type: Float
-  field :Time, type: Date
+  field :Time, type: DateTime
   field :coordActual, type: Array
   field :WiskiRiverName, type: String
 
