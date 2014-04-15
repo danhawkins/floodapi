@@ -1,10 +1,10 @@
-require_relative '../../lib/download_latest_file'
+require_relative '../../lib/process_lastest_file'
 
 class ReaderWorker
   include Sidekiq::Worker
 
   def perform(*args)
-    download_latest_file
+    process_lastest_file
   end
 end
 
