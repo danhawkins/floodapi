@@ -4,8 +4,11 @@ module Flood
     namespace :stations do
 
       desc 'Return a list of stations'
+      params do
+        requires :limit, type: Integer, desc: 'The number of records to return', default: 1000
+      end
       get do
-        present Station.all
+        present Station.limit(params[:limit] || 1000).all
       end
 
       params do

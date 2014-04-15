@@ -34,7 +34,7 @@ gem 'grape-swagger', github: 'danhawkins/grape-swagger'
 # deployment
 gem 'capistrano'
 gem 'capistrano-ext'
-gem 'capistrano-rvm'
+gem 'capistrano-rbenv'
 gem 'capistrano-bundler'#, '1.0.0'
 gem 'capistrano-rails'#, github: 'capistrano/rails', tag: 'v1.1.0'
 
