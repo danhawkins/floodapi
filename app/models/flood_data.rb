@@ -2,7 +2,7 @@ class FloodData
   include Mongoid::Document
   store_in collection: "flooddata"
 
-  field :stationReference, type: String
+  field :stationReference
   field :region, type: String
   field :ngr, type: String
   field :stationName, type: String
@@ -15,6 +15,8 @@ class FloodData
   field :WiskiRiverName, type: String
 
   index( { coordActual: '2d' } )
+  index "Time" => 1
+
 
   def self.aggregate(params)
 
@@ -36,7 +38,12 @@ class FloodData
     matchParams[:stationReference] = params[:stationReference].to_s if params[:stationReference]
     matchParams[:parameter] = CGI.unescape(params[:type].to_s) if params[:type] 
 
-    options << { '$match' =>  matchParams } unless matchParams.empty?  
+    binding.pry
+
+    matchParams["Time"] = { "$gte" => params[:start]} if params[:start]
+    matchParams["Time"] = { "$lte" => params[:end]} if params[:end]
+
+    options << { '$match' => matchParams } unless matchParams.empty?  
     options << { '$group' => { _id: { stationReference: '$stationReference', parameter: '$parameter' }.merge(dateGroup), value: {'$avg' => '$value'} } }
 
     collection.aggregate(options)
