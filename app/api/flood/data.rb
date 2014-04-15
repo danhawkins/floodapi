@@ -13,7 +13,7 @@ module Flood
         optional :historic, type: Boolean, desc: 'Use historic data'
       end
       get do 
-        data = FloodData.aggregate(params)
+        data = (params[:historic] ? FloodDataHistoric : FloodData).aggregate(params)
         data.each do |row|
           row.merge!(row.delete('_id'))
         end

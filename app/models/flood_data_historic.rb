@@ -1,6 +1,6 @@
-class FloodData
+class FloodDataHistoric
   include Mongoid::Document
-  store_in collection: "flooddata"
+  store_in collection: "flooddata_historical"
 
   field :stationReference
   field :region, type: String
