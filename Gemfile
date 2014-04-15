@@ -64,3 +64,6 @@ group :test do
   gem 'timecop'
   gem 'guard-rspec', require: false
 end
+
+gem 'sidekiq'
+gem 'whenever', :require => false
