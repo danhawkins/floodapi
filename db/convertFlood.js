@@ -1,4 +1,4 @@
-db.flooddata_staging_test.find().forEach(function(obj){
+db.flooddata_staging.find().forEach(function(obj){
         obj.Time = ISODate(obj.Time);
         delete obj['_id'];
         delete obj[''];
@@ -10,5 +10,5 @@ db.flooddata_staging_test.find().forEach(function(obj){
                 obj.coordActual = [0,0];
                 obj.WiskiRiverName = "";
         }
-        db.flooddata_test.insert(obj);
+        db.flooddata.insert(obj);
 });
