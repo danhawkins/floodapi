@@ -36,7 +36,7 @@ class FloodData
 
     matchParams = {}
     matchParams['stationReference'] = params[:stationReference].numeric? ? params[:stationReference].to_f : params[:stationReference] if params[:stationReference]
-    #matchParams['parameter'] = CGI.unescape(params[:type].to_s) unless params[:type].nil? || params[:type].blank?
+    matchParams['parameter'] = CGI.unescape(params[:type].to_s) unless params[:type].nil? || params[:type].blank?
 
     matchParams["Time"] = { "$gte" => params[:start]} if params[:start].present?
     matchParams["Time"] = { "$lte" => params[:end]} if params[:end].present?
