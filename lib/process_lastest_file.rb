@@ -8,9 +8,9 @@ require 'net/http'
 $data_file = File.expand_path("../../data/stations.tsv", __FILE__)
 $old_data_file = "#{$data_file}_old"
 $server_data_file = File.expand_path("../../data/all_stations.tsv", __FILE__)
-$conversion_file = File.expand_path("../../db/convertFloodTest.js", __FILE__)
+$conversion_file = File.expand_path("../../db/convertFlood.js", __FILE__)
 
-$database = 'flooddata_staging_test'
+$database = 'flooddata_staging'
 
 def process_lastest_file
   rotate_last_file
