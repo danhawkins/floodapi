@@ -5,6 +5,7 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 # Ignore bundler config.
+config/mongooid.yml
 /.bundle
 /.env
 # Ignore the default SQLite database.
@@ -15,3 +16,4 @@
 /log/*.log
 /tmp
 /data
+config/mongoid.yml

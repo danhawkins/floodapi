@@ -5,6 +5,8 @@ class Station
   field :coordActual, type: Array
   field :WiskiRiverName, type: String
 
+  has_many :data, class_name: 'FloodData', primary_key: 'stationReference', foreign_key: 'stationReference'
+
   index( { coordActual: '2d' } )
 
   def entity

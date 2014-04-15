@@ -16,6 +16,32 @@ class FloodData
 
   index( { coordActual: '2d' } )
 
+  def self.aggregate(params)
+
+    params[:group] ||= 'day'
+    case params[:group]
+    when 'day'
+      dateGroup = { year: { '$year' => '$Time'} , month: { '$month' => '$Time'}, day: { '$dayOfMonth' => '$Time' } }
+    when 'week'
+      dateGroup = { year: { '$year' => '$Time'}, week: { '$week' => '$Time'} }
+    when 'month'
+      dateGroup = { year: { '$year' => '$Time'}, month: { '$month' => '$Time'} }
+    when 'year'
+      dateGroup = { year: { '$year' => '$Time'} }
+    end
+
+    options = []
+
+    matchParams = {}
+    matchParams[:stationReference] = params[:stationReference].to_s if params[:stationReference]
+    matchParams[:parameter] = CGI.unescape(params[:type].to_s) if params[:type] 
+
+    options << { '$match' =>  matchParams } unless matchParams.empty?  
+    options << { '$group' => { _id: { stationReference: '$stationReference', parameter: '$parameter' }.merge(dateGroup), value: {'$avg' => '$value'} } }
+
+    collection.aggregate(options)
+  end
+
   def entity
     Entity.new(self)
   end

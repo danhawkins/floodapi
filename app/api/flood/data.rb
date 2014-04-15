@@ -5,10 +5,19 @@ module Flood
 
       desc 'Return a list of flood data'
       params do
-        requires :limit, type: Integer, desc: 'The number of records to return', default: 1000
+        optional :stationReference, type: String
+        optional :start, type: Date
+        optional :end, type: Date
+        optional :group, type: String, desc: 'The grouping type', values: ['day', 'week', 'month', 'year'], default: 'day'
+        optional :type, type: String, desc: 'The data type', values: ['Flow', 'Rainfall', 'Water Level', 'Wind']
+        optional :historic, type: Boolean, desc: 'Use historic data'
       end
-      get do
-        present FloodData.limit(params[:limit] || 1000).all
+      get do 
+        data = FloodData.aggregate(params)
+        data.each do |row|
+          row.merge!(row.delete('_id'))
+        end
+        present data
       end
 
     end
