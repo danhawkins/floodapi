@@ -7,6 +7,7 @@ set :repo_url, 'git@github.com:danhawkins/floodapi.git'
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 set :rbenv_ruby, '2.1.1'
+set :rbenv_type, :system
 # Default deploy_to directory is /var/www/my_app
 set :deploy_to, "/srv/www/floodapi"
 
