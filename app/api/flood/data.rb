@@ -5,7 +5,7 @@ module Flood
 
       desc 'Return a list of flood data'
       params do
-        requires :stationReference, type: String, values: -> { Station.distinct('stationReference').map{|n| n.is_a?(String) ? n : n.round.to_s} }
+        requires :stationReference
         optional :start, type: Date
         optional :end, type: Date
         optional :group, type: String, desc: 'The grouping type', values: ['day', 'week', 'month', 'year'], default: 'day'
