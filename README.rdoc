@@ -1,3 +1,19 @@
 == README
 
 Flood Data API
+
+
+== Database
+Create a .env file like so:
+export MONGOURL=<host>:<port>
+export MONGOUSER=<user>
+export MONGOPASS=<pass>
+
+Source this file to allow mongoid.yml to use the env vars required to connect to the mongodb
+
+== Pow
+.powrc should contain
+
+source .env
+
+
