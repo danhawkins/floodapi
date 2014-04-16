@@ -30,6 +30,7 @@ gem 'rack-cors'
 gem 'grape', github: 'intridea/grape', ref: 'b760958436d7d830757a266b618504fa619c8925'
 gem 'grape-entity', github: 'intridea/grape-entity'
 gem 'grape-swagger', github: 'danhawkins/grape-swagger'
+gem 'anjlab-bootstrap-rails', '~> 3.0.3.0', require: 'bootstrap-rails'
 
 # deployment
 gem 'capistrano'
